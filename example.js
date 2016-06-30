@@ -72,6 +72,18 @@ Quo.prototype.greeting = function () {
 
 console.log(myQuo.greeting); //now runs
 
+//an alternate form from p 38 doesn't use construction, but DOES keep status private
+var quo = function(status) {
+	return {
+		get_status: function () {
+			return status;
+		}
+	};
+};
+
+mySecondQuo = quo("amazed");
+
+console.log(mySecondQuo.get_status());
 
 //Apply Invocation Pattern
 //'apply' receives an object for context, then an array of parameters

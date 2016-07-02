@@ -1,3 +1,9 @@
+Function.prototype.method = function (name, func) {
+	if (!this.prototype[name]) {
+		this.prototype[name] = func;
+	}
+};
+
 String.method('deentityify', function() {
 	var entitity = {
 		quot: '"',
@@ -13,4 +19,5 @@ String.method('deentityify', function() {
 			}
 		);
 	};
-}());
+}());//immediately invoked expression
+

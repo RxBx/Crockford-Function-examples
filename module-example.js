@@ -5,7 +5,7 @@ Function.prototype.method = function (name, func) {
 };
 
 String.method('deentityify', function() {
-	var entitity = {
+	var entity = {
 		quot: '"',
 		lt: '<',
 		gt: '>'

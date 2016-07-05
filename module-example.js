@@ -32,3 +32,30 @@ console.log(hello.deentityify()); //"Hi < & bye >
 var bye = '&quot;&gt;&amp;&lt;'
 
 console.log(bye.deentityify()); //">&amp;<
+
+// makes / returns an object w. serial number making methods;
+var serial_maker = function () {
+	var prefix = '';
+	var seq = 0;
+	return  {
+		set_prefix: function (p) {
+			prefix = String(p);
+		},
+		set_seq: function (s) {
+			seq =s;
+		},
+		gensym: function() {
+			var result = prefix + seq;
+			seq+= 1;
+			return result;
+		}
+
+	};
+};//Crockford erroneously calls this function w. '()';
+
+var seqer = serial_maker(); //object created
+seqer.set_prefix('Q'); //set prefix
+seqer.set_seq(1000); //set sequence
+var unique = seqer.gensym(); //unique is "Q1000"
+
+//if seqer.gensym is passed to another function, that function couldn't access interior data of seqer

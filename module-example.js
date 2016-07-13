@@ -58,4 +58,6 @@ seqer.set_prefix('Q'); //set prefix
 seqer.set_seq(1000); //set sequence
 var unique = seqer.gensym(); //unique is "Q1000"
 
+console.log(unique);
+
 //if seqer.gensym is passed to another function, that function couldn't access interior data of seqer

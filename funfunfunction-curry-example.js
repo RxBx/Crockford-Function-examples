@@ -2,7 +2,7 @@ let dragon =
   name =>
     size => 
       element =>
-        name + 'is a' +
+        name + 'is a ' +
         size + ' dragon that breathes ' +
         element + '!'
         
@@ -13,3 +13,10 @@ console.log(dragon ('fluffykins')('tiny')('lightening'));
 let fluffykinsDragon = dragon ('fluffykins');
 
 console.log(fluffykinsDragon('tiny')('lightening')); //same output
+
+//or
+
+let tinyDragon = fluffykinsDragon('tiny');
+
+console.log(tinyDragon('lightening')); //same output
+

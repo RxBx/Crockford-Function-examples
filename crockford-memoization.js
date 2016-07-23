@@ -48,3 +48,43 @@ memoFooBar(2); // whilst this will need to be calculated
 memoFooBar(3);
 memoFooBar(2);
 memoFooBar(3);
+
+//more thorough Addy Osmani
+function memoize( fn ) {
+    return function () {
+        var args = Array.prototype.slice.call(arguments),
+            hash = "",
+            i = args.length;
+        currentArg = null;
+        while (i--) {
+            currentArg = args[i];
+            hash += (currentArg === Object(currentArg)) ?
+            JSON.stringify(currentArg) : currentArg;
+            fn.memoize || (fn.memoize = {});
+        }
+        return (hash in fn.memoize) ? fn.memoize[hash] :
+        fn.memoize[hash] = fn.apply(this, args);
+    };
+}
+
+var simpleFibonacci = function(n) {
+	return n < 2 ? n : simpleFibonacci(n-1) + simpleFibonacci(n-2);
+};
+
+var fibbonacciMemod = memoize(simpleFibonacci);
+
+console.log(fibbonacciMemod(10));
+
+var square = function(z) {
+	console.log(z*z);
+	return z*z;
+};
+
+var squareMemod = memoize(square);
+
+console.log("first time "+squareMemod(7));
+console.log("now again" + squareMemod(7));
+console.log("now again" + squareMemod(7));
+console.log("first time "+squareMemod(6));
+console.log("now again" + squareMemod(6));
+console.log("now again" + squareMemod(7));
